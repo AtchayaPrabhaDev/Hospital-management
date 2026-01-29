@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navigation from "./hospital-management/navigation/Navigation";
 
 import Home from "./hospital-management/home/Home";
@@ -10,7 +10,7 @@ import Confirmation from "./hospital-management/conformation/Conformation";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/Hospital-management">
+    <>
       <Navigation />
 
       <Routes>
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/confirmation" element={<Confirmation />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
