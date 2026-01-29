@@ -10,7 +10,7 @@ import Confirmation from "./hospital-management/conformation/Conformation";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Hospital-management">
       <Navigation />
 
       <Routes>
