@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./hospital-management/navigation/Navigation";
-
 import Home from "./hospital-management/home/Home";
 import Specialties from "./hospital-management/Specialties/Specialties";
 import Doctor from "./hospital-management/doctor/Doctor";
