@@ -2,57 +2,31 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./contact.css";
 
-interface AppointmentForm {
-  name: string;
-  phone: string;
-  email: string;
-  address: string;
-}
-
 function Contact() {
-  const [formData, setFormData] = useState<AppointmentForm>({
+  const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
     address: "",
   });
-
   const navigate = useNavigate();
-
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  const { name, value } = e.target;
+  setFormData({ ...formData, [name]: value });
+};
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+
     e.preventDefault();
-
-    // unique appointment id
-    const appointmentId = Date.now();
-
-    const appointmentData = {
-      ...formData,
-      appointmentId,
-    };
-
-    // store appointment separately
-    localStorage.setItem(
-      `appointment_${appointmentId}`,
-      JSON.stringify(appointmentData)
-    );
-
-    // navigate to confirmation page with id
-    navigate("/confirmation", {
-      state: { appointmentId },
-    });
+    localStorage.setItem("userInfo", JSON.stringify(formData));
+    navigate("/doctors");
   };
-
   return (
     <div>
       <h2>Enter Your Details</h2>
-
       <form onSubmit={handleSubmit}>
         <p>NAME:</p>
         <input
@@ -94,7 +68,7 @@ function Contact() {
         />
 
         <button type="submit" className="slot">
-          Continue
+          Continue to Doctors
         </button>
       </form>
     </div>
@@ -102,6 +76,5 @@ function Contact() {
 }
 
 export default Contact;
-
 
 
